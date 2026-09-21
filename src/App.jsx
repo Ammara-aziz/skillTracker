@@ -1,126 +1,91 @@
-import { useState } from 'react'
-import Sidebar from './layout/Sidebar'
-import Navbar from './layout/Navbar'
-import './App.css'
+import { useState } from "react";
+import Sidebar from "./layout/Sidebar";
+import Navbar from "./layout/Navbar";
+import AppRoutes from "./routes/AppRoutes";
+import Button from "./components/common/Button";
+import Input from "./components/common/Input";
+import Card from "./components/common/Card";
+import Badge from "./components/common/Badge";
+import ProgressBar from "./components/common/ProgressBar";
+import Loader from "./components/common/Loader";
+import EmptyState from "./components/common/EmptyState";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>
-        hello
-      </h1>
-      <Navbar/>
-      <Sidebar/>
-      {/*<section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+      <div className="min-h-screen bg-slate-50 p-10">
+        <Card className="mx-auto max-w-md">
+          <h1 className="text-2xl font-bold text-slate-900">
+            Frontend Developer
+          </h1>
+          <Badge>React</Badge>
+
+          <p className="mt-2 text-slate-500">
+            Build modern web applications using React, JavaScript and Tailwind
+            CSS.
+          </p>
+
+          <div className="mt-5">
+            <Button>View Job</Button>
+          </div>
+        </Card>
+        <div className="min-h-screen bg-slate-50 p-10">
+          <Card className="mx-auto max-w-md">
+            <Badge>React</Badge>
+            <Badge>In Progress</Badge>
+            <p className="mt-2 text-slate-500">
+              Your current React skill progress
+            </p>
+            <div>
+              <ProgressBar progress={55} />
+            </div>
+            <p className="mt-2 text-slate-500">65%</p>
+          </Card>
         </div>
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+          <Card>
+            <h1 className="text-2xl font-bold text-slate-900">
+              Analyzing Job Description
+            </h1>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+            <p>This is a simple card component.</p>
+            <div className="mt-4">
+              <Loader />
+            </div>
+            <EmptyState
+              title="No projects yet"
+              description="Add your first project to start building your career evidence."
+              action={<Button>Add Project</Button>}
+            />
+          </Card>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>*/}
+      </div>
+      {/*Login Form*/}
+      {/*<div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#ae8ae0] to-[#595da5]">
+        <div className="w-full max-w-md space-y-5 rounded-xl bg-white p-6 shadow-sm">
+          <h1 className="text-2xl font-bold text-slate-900">JobReady AI</h1>
+          
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+          />
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+          />
+          <Button label="Submit">Login</Button>
+        </div>*/}
+      <AppRoutes />
+      <Navbar />
+      <Sidebar />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
