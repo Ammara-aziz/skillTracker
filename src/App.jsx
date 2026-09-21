@@ -3,19 +3,19 @@ import Sidebar from "./layout/Sidebar";
 import Navbar from "./layout/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import Button from "./components/common/Button";
-import Input from "./components/common/Input";
+{/*import Input from "./components/common/Input";
 import Card from "./components/common/Card";
 import Badge from "./components/common/Badge";
 import ProgressBar from "./components/common/ProgressBar";
 import Loader from "./components/common/Loader";
 import EmptyState from "./components/common/EmptyState";
-
+*/}
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="min-h-screen bg-slate-50 p-10">
+      {/*<div className="min-h-screen bg-slate-50 p-10">
         <Card className="mx-auto max-w-md">
           <h1 className="text-2xl font-bold text-slate-900">
             Frontend Developer
@@ -61,7 +61,8 @@ function App() {
             />
           </Card>
         </div>
-      </div>
+         <Sidebar />
+      </div>*/}
       {/*Login Form*/}
       {/*<div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#ae8ae0] to-[#595da5]">
         <div className="w-full max-w-md space-y-5 rounded-xl bg-white p-6 shadow-sm">
@@ -80,9 +81,9 @@ function App() {
             placeholder="Enter your password"
           />
           <Button label="Submit">Login</Button>
-        </div>*/}
+        </div>
       <AppRoutes />
-      <Navbar />
+      <Navbar />*/}
       <Sidebar />
     </>
   );
