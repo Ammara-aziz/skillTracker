@@ -1,90 +1,52 @@
-import { useState } from "react";
-import Sidebar from "./layout/Sidebar";
-import Navbar from "./layout/Navbar";
-import AppRoutes from "./routes/AppRoutes";
-import Button from "./components/common/Button";
-{/*import Input from "./components/common/Input";
+import DashboardLayout from "./layout/DashboardLayout";
 import Card from "./components/common/Card";
 import Badge from "./components/common/Badge";
 import ProgressBar from "./components/common/ProgressBar";
-import Loader from "./components/common/Loader";
-import EmptyState from "./components/common/EmptyState";
-*/}
-function App() {
-  // const [count, setCount] = useState(0)
 
+{
+  /*import Navbar from "./layout/Navbar";
+import Sidebar from "./layout/Sidebar";
+*/
+}
+
+function App() {
   return (
     <>
-      {/*<div className="min-h-screen bg-slate-50 p-10">
-        <Card className="mx-auto max-w-md">
-          <h1 className="text-2xl font-bold text-slate-900">
-            Frontend Developer
-          </h1>
-          <Badge>React</Badge>
-
-          <p className="mt-2 text-slate-500">
-            Build modern web applications using React, JavaScript and Tailwind
-            CSS.
-          </p>
-
-          <div className="mt-5">
-            <Button>View Job</Button>
-          </div>
-        </Card>
-        <div className="min-h-screen bg-slate-50 p-10">
-          <Card className="mx-auto max-w-md">
-            <Badge>React</Badge>
-            <Badge>In Progress</Badge>
-            <p className="mt-2 text-slate-500">
-              Your current React skill progress
-            </p>
-            <div>
-              <ProgressBar progress={55} />
-            </div>
-            <p className="mt-2 text-slate-500">65%</p>
-          </Card>
-        </div>
-        <div>
-          <Card>
+      <DashboardLayout title="Dashboard">
+        <div className="space-y-6">
+          <div>
             <h1 className="text-2xl font-bold text-slate-900">
-              Analyzing Job Description
+              Welcome back, Ammara
             </h1>
-
-            <p>This is a simple card component.</p>
-            <div className="mt-4">
-              <Loader />
+            <p className="mt-1 text-sm text-slate-500">
+              Here's an overview of your career progress.
+            </p>
+          </div>
+          <Card>
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-slate-900">
+                  Your Skills
+                </h2>
+                <p className="mt-1 text-sm text-slate-500">
+                  Your Current Target Role
+                </p>
+              </div>
+              <Badge>Target Role</Badge>
             </div>
-            <EmptyState
-              title="No projects yet"
-              description="Add your first project to start building your career evidence."
-              action={<Button>Add Project</Button>}
-            />
+            <div className="mt-4">
+              <div className="mb-2 flex justify-between">
+                <span className="text-sm font-medium text-slate-700">
+                  Job Readiness
+                </span>
+
+                <span className="text-sm font-medium text-indigo-600">65%</span>
+              </div>
+              <ProgressBar progress={65} />
+            </div>
           </Card>
         </div>
-         <Sidebar />
-      </div>*/}
-      {/*Login Form*/}
-      {/*<div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#ae8ae0] to-[#595da5]">
-        <div className="w-full max-w-md space-y-5 rounded-xl bg-white p-6 shadow-sm">
-          <h1 className="text-2xl font-bold text-slate-900">JobReady AI</h1>
-          
-          <Input
-            label="Email"
-            type="email"
-            placeholder="Enter your email"
-            name="email"
-          />
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-          />
-          <Button label="Submit">Login</Button>
-        </div>
-      <AppRoutes />
-      <Navbar />*/}
-      <Sidebar />
+      </DashboardLayout>
     </>
   );
 }
