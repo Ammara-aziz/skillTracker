@@ -1,4 +1,21 @@
-function Navbar({ title = "Dashboard" }) {
+import { useLocation } from "react-router-dom";
+
+function Navbar() {
+  const location = useLocation();
+  const pageTitles = {
+    "/dashboard": "Dashboard",
+    "/jobs/target": "Target Job",
+    "/jobs/analyzer": "Job Analyzer",
+    "/skills": "My Skills",
+    "/skills/gaps": "Skill Gap",
+    "/roadmap": "Roadmap",
+    "/projects": "Projects",
+    "/jobs/match": "Job Match",
+    "/ai-coach": "AI Coach",
+    "/interview": "Interview Prep",
+    "/settings": "Settings",
+  };
+  const title = pageTitles[location.pathname] || "JobReady AI Home";
   return (
     <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-gray-600 px-6">
       {/* Page title */}

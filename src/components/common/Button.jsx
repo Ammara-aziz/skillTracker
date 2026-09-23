@@ -6,6 +6,7 @@ const Button = ({ children, onClick, type = "button" }) => {
       type={type}
       onClick={onClick}
       className="
+        w-full
         px-5
         py-2.5
         rounded-lg
