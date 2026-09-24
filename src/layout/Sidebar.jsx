@@ -7,7 +7,7 @@ function Sidebar() {
       {/* Logo */}
       <div className="border-b border-slate-200 px-6 py-5">
         <h1 className="text-xl font-bold text-indigo-600">
-          JobReady AI
+          CareerForge AI
         </h1>
 
         <p className="mt-1 text-xs text-slate-400">

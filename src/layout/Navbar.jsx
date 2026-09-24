@@ -17,7 +17,7 @@ function Navbar() {
   };
   const title = pageTitles[location.pathname] || "JobReady AI Home";
   return (
-    <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-gray-600 px-6">
+    <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-gradient-to-r from-indigo-600 via-indigo-600 to-violet-600 px-6">
       {/* Page title */}
       <div>
         <h2 className="text-lg font-semibold text-slate-900">{title}</h2>

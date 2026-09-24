@@ -1,17 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Card from "../../components/common/Card";
 import PageHeader from "../../components/common/PageHeader";
 import ProgressBar from "../../components/common/ProgressBar";
 import Badge from "../../components/common/Badge";
 
 function JobAnalyzer() {
+  const navigate = useNavigate();
+
   const [jobDescription, setJobDescription] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState(null);
+
   const minimumCharacters = 100;
 
   const isJobDescriptionValid =
     jobDescription.trim().length >= minimumCharacters;
+
   const handleAnalyze = () => {
     if (!isJobDescriptionValid) return;
 
@@ -32,26 +38,44 @@ function JobAnalyzer() {
           "CSS",
         ],
 
-        preferredSkills: ["TypeScript", "Node.js", "PostgreSQL"],
+        preferredSkills: [
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+        ],
 
         matchPercentage: 67,
 
-        matchedSkills: ["React", "JavaScript", "Git", "HTML", "CSS"],
+        matchedSkills: [
+          "React",
+          "JavaScript",
+          "Git",
+          "HTML",
+          "CSS",
+        ],
 
-        missingSkills: ["REST APIs", "TypeScript", "Node.js", "PostgreSQL"],
+        missingSkills: [
+          "REST APIs",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+        ],
       };
 
       setAnalysisResult(result);
       setIsAnalyzing(false);
     }, 2000);
   };
+
   return (
     <div>
+      {/* Page Header */}
       <PageHeader
         title="Job Analyzer"
         description="Paste a job description to discover the skills employers are looking for and compare them with your current profile."
       />
 
+      {/* Job Description Input */}
       <Card>
         <div>
           <label
@@ -68,7 +92,9 @@ function JobAnalyzer() {
           <textarea
             id="job-description"
             value={jobDescription}
-            onChange={(event) => setJobDescription(event.target.value)}
+            onChange={(event) =>
+              setJobDescription(event.target.value)
+            }
             placeholder="Paste the job description here..."
             rows={12}
             className="
@@ -93,19 +119,21 @@ function JobAnalyzer() {
             "
           />
 
+          {/* Validation */}
           <div className="mt-3 flex items-start justify-between gap-4">
             <div>
               <p className="text-xs text-slate-400">
-                Include responsibilities, requirements, and preferred skills for
-                better analysis.
+                Include responsibilities, requirements, and preferred
+                skills for better analysis.
               </p>
 
-              {jobDescription.length > 0 && !isJobDescriptionValid && (
-                <p className="mt-1 text-xs font-medium text-amber-600">
-                  Add at least {minimumCharacters} characters for a useful
-                  analysis.
-                </p>
-              )}
+              {jobDescription.length > 0 &&
+                !isJobDescriptionValid && (
+                  <p className="mt-1 text-xs font-medium text-amber-600">
+                    Add at least {minimumCharacters} characters for a
+                    useful analysis.
+                  </p>
+                )}
             </div>
 
             <span
@@ -118,6 +146,8 @@ function JobAnalyzer() {
               {jobDescription.length} / {minimumCharacters} minimum
             </span>
           </div>
+
+          {/* Analyze Button */}
           <div className="mt-6 flex justify-end">
             <button
               type="button"
@@ -143,21 +173,26 @@ function JobAnalyzer() {
                 <span className="flex items-center gap-2">
                   <span
                     className="
-        h-4
-        w-4
-        animate-spin
-        rounded-full
-        border-2
-        border-white/40
-        border-t-white
-      "
+                      h-4
+                      w-4
+                      animate-spin
+                      rounded-full
+                      border-2
+                      border-white/40
+                      border-t-white
+                    "
                   ></span>
+
                   Analyzing...
                 </span>
               ) : (
                 <>
                   Analyze Job
-                  <span className="ml-2" aria-hidden="true">
+
+                  <span
+                    className="ml-2"
+                    aria-hidden="true"
+                  >
                     →
                   </span>
                 </>
@@ -166,8 +201,11 @@ function JobAnalyzer() {
           </div>
         </div>
       </Card>
+
+      {/* Analysis Results */}
       {analysisResult && (
         <section className="mt-8">
+          {/* Results Header */}
           <div className="mb-5">
             <p className="text-sm font-medium text-indigo-600">
               Analysis Complete
@@ -182,7 +220,9 @@ function JobAnalyzer() {
             </p>
           </div>
 
+          {/* Summary Cards */}
           <div className="grid gap-4 lg:grid-cols-3">
+            {/* Detected Role */}
             <Card>
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Detected Role
@@ -197,6 +237,7 @@ function JobAnalyzer() {
               </p>
             </Card>
 
+            {/* Tracked Skill Match */}
             <Card>
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Tracked Skill Match
@@ -213,10 +254,13 @@ function JobAnalyzer() {
               </div>
 
               <div className="mt-4">
-                <ProgressBar progress={analysisResult.matchPercentage} />
+                <ProgressBar
+                  progress={analysisResult.matchPercentage}
+                />
               </div>
             </Card>
 
+            {/* Skill Gaps */}
             <Card>
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Skill Gaps
@@ -230,42 +274,185 @@ function JobAnalyzer() {
                 skills need further development
               </p>
             </Card>
-            <div className="mt-6 grid gap-4 lg:grid-cols-2">
-              {/* Required Skills */}
-              <Card>
-                <h3 className="text-base font-semibold text-slate-900">
-                  Required Skills
-                </h3>
+          </div>
 
-                <p className="mt-1 text-sm text-slate-500">
-                  Core skills identified from the job description.
-                </p>
+          {/* Job Requirements */}
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            {/* Required Skills */}
+            <Card>
+              <h3 className="text-base font-semibold text-slate-900">
+                Required Skills
+              </h3>
+
+              <p className="mt-1 text-sm text-slate-500">
+                Core skills identified from the job description.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {analysisResult.requiredSkills.map((skill) => (
+                  <Badge key={skill}>
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+
+            {/* Preferred Skills */}
+            <Card>
+              <h3 className="text-base font-semibold text-slate-900">
+                Preferred Skills
+              </h3>
+
+              <p className="mt-1 text-sm text-slate-500">
+                Additional skills that may strengthen your fit for this
+                role.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {analysisResult.preferredSkills.map((skill) => (
+                  <Badge
+                    key={skill}
+                    variant="neutral"
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          {/* Skill Comparison */}
+          <div className="mt-8">
+            <h3 className="text-lg font-semibold text-slate-900">
+              Your Skill Comparison
+            </h3>
+
+            <p className="mt-1 text-sm text-slate-500">
+              See which tracked requirements match your current profile
+              and where you may need more development.
+            </p>
+
+            <div className="mt-4 grid gap-4 lg:grid-cols-2">
+              {/* Matched Skills */}
+              <Card>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">
+                      Skills You Match
+                    </p>
+
+                    <p className="mt-1 text-xs text-slate-500">
+                      Skills already represented in your profile.
+                    </p>
+                  </div>
+
+                  <Badge variant="success">
+                    {analysisResult.matchedSkills.length} matched
+                  </Badge>
+                </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {analysisResult.requiredSkills.map((skill) => (
-                    <Badge key={skill}>{skill}</Badge>
+                  {analysisResult.matchedSkills.map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="success"
+                    >
+                      ✓ {skill}
+                    </Badge>
                   ))}
                 </div>
               </Card>
 
-              {/* Preferred Skills */}
+              {/* Missing Skills */}
               <Card>
-                <h3 className="text-base font-semibold text-slate-900">
-                  Preferred Skills
-                </h3>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">
+                      Skills to Develop
+                    </p>
 
-                <p className="mt-1 text-sm text-slate-500">
-                  Additional skills that may strengthen your fit for this role.
-                </p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      Requirements not currently represented in your
+                      profile.
+                    </p>
+                  </div>
+
+                  <Badge variant="warning">
+                    {analysisResult.missingSkills.length} gaps
+                  </Badge>
+                </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {analysisResult.preferredSkills.map((skill) => (
-                    <Badge key={skill} variant="neutral">
+                  {analysisResult.missingSkills.map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="warning"
+                    >
                       {skill}
                     </Badge>
                   ))}
                 </div>
               </Card>
+            </div>
+          </div>
+
+          {/* Recommended Next Step */}
+          <div
+            className="
+              mt-8
+              rounded-2xl
+              border
+              border-indigo-100
+              bg-gradient-to-br
+              from-indigo-50
+              via-white
+              to-white
+              p-6
+            "
+          >
+            <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+                  Recommended Next Step
+                </p>
+
+                <h3 className="mt-2 text-lg font-semibold text-slate-900">
+                  Turn your skill gaps into a learning plan
+                </h3>
+
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+                  Build a focused roadmap around the skills identified
+                  in this analysis instead of learning everything at
+                  once.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => navigate("/roadmap")}
+                className="
+                  shrink-0
+                  rounded-lg
+                  bg-indigo-600
+                  px-5
+                  py-2.5
+                  text-sm
+                  font-semibold
+                  text-white
+                  transition
+                  hover:bg-indigo-700
+                  active:scale-95
+                "
+              >
+                Build My Roadmap
+
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </button>
             </div>
           </div>
         </section>

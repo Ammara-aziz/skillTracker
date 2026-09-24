@@ -150,7 +150,7 @@ function Dashboard() {
           title="Analyze a real job to discover your skill gaps"
           description="Paste a job description and JobReady AI will identify the skills employers are asking for and compare them with your current profile."
           actionLabel="Analyze a Job"
-          onAction={() => navigate("/analyze-job")}
+          onAction={() => navigate("/jobs/analyzer")}
         />
       </div>
       {/* Skill Gaps */}
