@@ -50,7 +50,7 @@ const Home = () => {
             to="/"
             className="text-xl font-bold tracking-tight text-indigo-600"
           >
-            RolePath AI
+            CareerForge AI
           </Link>
 
           <nav className="flex items-center gap-3">
